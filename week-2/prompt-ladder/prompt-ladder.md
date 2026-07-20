@@ -82,6 +82,8 @@ The output was still generic. It did not know who the portfolio was for or what 
 
 Next, I will specify the target audience for the portfolio.
 
+---
+
 # Version 2 (Defined Audience)
 
 ## Prompt
