@@ -51,201 +51,266 @@ This demonstrates that vague prompts lead to unpredictable results. Providing cl
 
 ---
 
-# Version 1
+# Version 1 (Role Assignment)
 
 ## Prompt
 
-Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript. The design should be modern, clean, and professional.
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
+
+Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
+
+The design should be modern, clean, and professional.
 
 ## Output
 
-Claude generated a frontend developer portfolio instead of assuming an unrelated profession.
+Claude generated the portfolio from the perspective of an experienced Frontend UI/UX Designer and Senior Frontend Developer.
 
 The output included:
 
-- Developer-centric portfolio design
-- Browser DevTools inspired UI elements
-- Browser tab navigation
-- Developer profile section
+- Professional portfolio structure
+- Better UI/UX decisions
 - Modern typography
 - Responsive layout
-- HTML, CSS, and JavaScript implementation
-- Professional color system
-- Interactive UI elements
+- Clean HTML, CSS, and JavaScript
+- Developer-focused presentation
 
 ## Analysis
 
-This prompt provided more context than Version 0 by specifying the target user (frontend developer), the technologies (HTML, CSS, JavaScript), and the desired design style (modern, clean, professional).
+### Technique Used: Role Assignment
 
-Because of the additional context, Claude generated a much more relevant portfolio that matched the intended audience and purpose.
+I assigned Claude the role of an expert Frontend UI/UX Designer and Senior Frontend Developer before giving the task.
+
+Compared to the baseline prompt, the AI responded more like an experienced professional instead of making random assumptions. The portfolio became more polished, developer-focused, and aligned with industry practices.
 
 ---
 
----
-
-# Version 2
+# Version 2 (Context & Motivation)
 
 ## Prompt
 
-Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
+
+I am creating this portfolio to apply for frontend developer internships and entry-level jobs.
+
+Build a responsive portfolio homepage using HTML, CSS, and JavaScript.
 
 The design should be modern, clean, and professional.
 
-Include the following sections:
-
-- Hero
-- About Me
-- Skills
-- Projects
-- Contact
-
-Use semantic HTML, responsive CSS, and clean code.
-
 ## Output
 
-Claude generated a structured frontend developer portfolio based on the requested requirements.
+Claude generated a portfolio that emphasized professional presentation for job applications.
 
 The output included:
 
-- Hero section
-- About Me section
-- Skills section
-- Projects section
-- Contact section
-- Semantic HTML structure
-- Responsive CSS layout
-- Clean and organized code
-- Client-side form validation
-- Accessibility improvements
-- Mobile-friendly navigation
-
-## Analysis
-
-Compared to Version 1, I clearly specified the required sections and coding standards. This reduced ambiguity and helped Claude generate a more structured, organized, and developer-focused portfolio. The output closely matched the requested requirements with less guessing from the AI.
-
----
-
-# Version 3
-
-## Prompt
-
-Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
-
-The design should be modern, clean, and professional.
-
-Include the following sections:
-
-- Hero
-- About Me
-- Skills
-- Projects
-- Contact
-
-Use semantic HTML, responsive CSS, and clean code.
-
-The portfolio should be designed to impress recruiters, hiring managers, and potential clients.
-
-## Output
-
-Claude generated a more professional portfolio that focused on presenting skills, projects, and experience in a way suitable for recruiters and potential clients.
-
-The output included:
-
-- Professional hero section
-- Strong call-to-action
-- Better project presentation
-- Organized skills section
-- Clean and accessible layout
+- A strong hero section
+- Professional introduction
+- Skills and projects focused on employability
+- Clean and modern layout
 - Responsive design
-- Semantic HTML
-- Portfolio content suitable for job applications
+- Well-organized HTML, CSS, and JavaScript
 
 ## Analysis
 
-In Version 3, I added the target audience to the prompt. This gave Claude more context about who the website was intended for. As a result, the generated portfolio became more professional and focused on highlighting the developer's skills and projects for recruiters, hiring managers, and potential clients.
+### Technique Used: Context & Motivation
 
----
+I explained why I needed the portfolio instead of only describing what to build.
 
-# Version 4
+Providing the purpose helped Claude understand the real goal of the project. As a result, the portfolio focused more on showcasing skills, projects, and professionalism for internship and job opportunities.
+
+# Version 3 (Few-shot Examples)
 
 ## Prompt
 
-Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
 
-The design should be modern, clean, and professional.
+I am creating this portfolio to apply for frontend developer internships and entry-level jobs.
 
-Include the following sections:
+Here are some examples of the design style I want:
 
-- Hero
-- About Me
-- Skills
-- Projects
-- Contact
+Example 1:
 
-Use semantic HTML, responsive CSS, and clean code.
+- Clean hero section
+- Modern typography
+- Responsive navigation
 
-The portfolio should be designed to impress recruiters, hiring managers, and potential clients.
+Example 2:
 
-Use a minimal layout with a blue and white color palette, subtle animations, and plenty of white space.
+- Project cards with hover effects
+- Skills displayed using badges
+- Professional contact section
+
+Now build a responsive portfolio homepage using HTML, CSS, and JavaScript following a similar style.
 
 ## Output
 
-Claude generated a visually refined portfolio with a cleaner layout, improved spacing, a consistent blue and white color palette, subtle animations, and a more modern user experience.
+Claude generated a portfolio that closely matched the provided examples.
+
+The output included:
+
+- Clean hero section
+- Responsive navigation
+- Modern typography
+- Interactive project cards
+- Skills displayed as badges
+- Professional contact section
+- Consistent UI throughout the page
 
 ## Analysis
 
-Adding visual design requirements helped Claude focus on the overall appearance of the portfolio. Compared to Version 3, the design became cleaner, more consistent, and more attractive while maintaining professionalism.
+### Technique Used: Few-shot Examples
 
----
+Instead of only describing the task, I provided small examples of the desired design and layout.
 
-# Version 5
+These examples helped Claude better understand my expectations. The generated portfolio followed the same style and structure, reducing ambiguity and producing a more consistent result.
+
+# Version 4 (Output Structure)
 
 ## Prompt
 
-Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
 
-The design should be modern, clean, and professional.
+I am creating this portfolio to apply for frontend developer internships and entry-level jobs.
 
-Include the following sections:
+Here are some examples of the design style I want:
 
-- Hero
-- About Me
-- Skills
-- Projects
-- Contact
+Example 1:
 
-Use semantic HTML, responsive CSS, and clean code.
+- Clean hero section
+- Modern typography
+- Responsive navigation
 
-The portfolio should be designed to impress recruiters, hiring managers, and potential clients.
+Example 2:
 
-Use a minimal layout with a blue and white color palette, subtle animations, and plenty of white space.
+- Project cards with hover effects
+- Skills displayed using badges
+- Professional contact section
 
-Write well-commented, maintainable code, follow accessibility best practices, optimize performance, and ensure the website works perfectly on desktop, tablet, and mobile devices.
+Build a responsive portfolio homepage using HTML, CSS, and JavaScript.
+
+Return the response in the following structure:
+
+1. Project Overview
+2. HTML Structure
+3. CSS Styling
+4. JavaScript Functionality
+5. Responsive Design Notes
+6. Accessibility Features
 
 ## Output
 
-Claude generated a production-ready portfolio with clean code, accessibility improvements, responsive layouts, optimized performance, and well-structured components suitable for professional frontend development.
+Claude organized the response into clearly defined sections instead of generating one long block of code.
+
+The output included:
+
+- Project overview
+- HTML structure
+- CSS styling
+- JavaScript functionality
+- Responsive design notes
+- Accessibility recommendations
+
+The response was much easier to understand and follow.
 
 ## Analysis
 
-Version 5 added technical quality requirements. This encouraged Claude to generate cleaner, more maintainable, accessible, and production-ready code. The final output closely matched real-world frontend development best practices.
+### Technique Used: Output Structure
 
----
+I explicitly defined how I wanted Claude to organize its response.
+
+Instead of deciding the format on its own, Claude followed the requested structure. This made the output more readable, organized, and easier to implement.
+
+# Version 5 (Step Decomposition)
+
+## Prompt
+
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
+
+I am creating this portfolio to apply for frontend developer internships and entry-level jobs.
+
+Build the portfolio step by step.
+
+Follow this order:
+
+Step 1: Plan the page layout.
+
+Step 2: Create the HTML structure.
+
+Step 3: Write responsive CSS.
+
+Step 4: Add JavaScript interactions.
+
+Step 5: Improve accessibility.
+
+Step 6: Optimize for performance.
+
+Step 7: Review the final result and suggest improvements.
+
+## Output
+
+Claude completed the task in a logical sequence instead of generating everything at once.
+
+The response included:
+
+- Layout planning
+- HTML structure
+- Responsive CSS
+- JavaScript functionality
+- Accessibility improvements
+- Performance optimization
+- Final review and recommendations
+
+This made the implementation process much easier to follow.
+
+## Analysis
+
+### Technique Used: Step Decomposition
+
+I broke the task into smaller steps before asking Claude to generate the solution.
+
+Instead of producing one large response, Claude followed each step in order. This resulted in a clearer workflow, better organization, and an output that was easier to understand and implement.
 
 # Claude vs ChatGPT Comparison
 
-| Criteria              | Claude                            | ChatGPT                                       |
-| --------------------- | --------------------------------- | --------------------------------------------- |
-| Understanding Context | Excellent                         | Excellent                                     |
-| UI/UX Creativity      | Excellent                         | Very Good                                     |
-| Code Quality          | Excellent                         | Excellent                                     |
-| Prompt Following      | Excellent                         | Excellent                                     |
-| Explanation           | Detailed                          | Clear and Structured                          |
-| Overall               | Great for creative frontend ideas | Great for structured development and learning |
+| Criteria                 | Claude                                                                     | ChatGPT                                                                                 |
+| ------------------------ | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Understanding the Prompt | Followed the prompt accurately and produced a polished frontend portfolio. | Understood the prompt well and generated a structured solution with clear explanations. |
+| Creativity               | Produced a visually creative and modern UI with strong design ideas.       | Focused more on practical implementation and maintainable code.                         |
+| Code Quality             | Generated clean, organized, and responsive frontend code.                  | Generated clean code with detailed explanations and best practices.                     |
+| Ease of Understanding    | Required less explanation but assumed some design decisions.               | Explained decisions more clearly, making it easier for beginners to learn.              |
+| Best Use Case            | Best for creative UI generation and rapid prototyping.                     | Best for learning, implementation, debugging, and understanding concepts.               |
 
----
+## Conclusion
+
+Both Claude and ChatGPT produced high-quality results. Claude was stronger in creative UI generation, while ChatGPT was more effective for learning, explanation, and step-by-step guidance. Using both together provided the best overall workflow.
 
 # Final Reusable Prompt
+
+You are an expert Frontend UI/UX Designer and Senior Frontend Developer.
+
+I am creating a portfolio website to apply for frontend developer internships and entry-level jobs.
+
+Build a responsive portfolio homepage using HTML, CSS, and JavaScript.
+
+Follow these requirements:
+
+- Modern and professional UI
+- Hero, About, Skills, Projects, and Contact sections
+- Semantic HTML
+- Responsive CSS
+- Clean and maintainable JavaScript
+- Accessible design
+- Performance optimization
+- Mobile-first responsive layout
+
+Return the response in the following format:
+
+1. Project Overview
+2. HTML Structure
+3. CSS Styling
+4. JavaScript Functionality
+5. Accessibility Features
+6. Performance Improvements
+7. Final Recommendations
 
 Build a responsive portfolio homepage for a frontend developer using HTML, CSS, and JavaScript.
 
@@ -271,4 +336,8 @@ Ensure the website is fully responsive, accessible, performance optimized, SEO-f
 
 # Reflection
 
-This assignment taught me that prompt quality directly affects AI output quality. Starting with a vague prompt resulted in incorrect assumptions, while gradually adding context, structure, audience, design requirements, and technical constraints produced significantly better results. I learned that effective prompt engineering is an iterative process where each improvement makes the AI output more accurate, relevant, and professional.
+This assignment helped me understand that prompt engineering is an iterative process. Starting with a simple prompt produced a generic result, but applying techniques such as Role Assignment, Context & Motivation, Few-shot Examples, Output Structure, and Step Decomposition significantly improved the quality of the AI's responses.
+
+I learned that small changes in a prompt can greatly influence the relevance, organization, and professionalism of the output. This exercise also showed me that effective prompting is not just about asking a question—it is about providing the right context, defining expectations clearly, and guiding the AI toward the desired result.
+
+Going forward, I will use these techniques whenever I work with AI tools for software development and problem-solving.
