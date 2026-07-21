@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Settings</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+
+    <div class="wrap">
+
+        <div class="masthead">
+            <div>
+                <div class="kicker">Manuscript No. 0417</div>
+                <h1>Account settings</h1>
+            </div>
+        </div>
+
+        <p class="intro">Fields are checked as you write, the way a copy editor marks a proof: a check in the margin
+            when a line is clean, a note when it needs another pass.</p>
+
+        <form id="settingsForm" novalidate>
+
+            <fieldset>
+                <legend>Identity</legend>
+                <p class="section-note">How your name and contact details appear across the account.</p>
+
+                <div class="row">
+                    <div class="field" data-field="name">
+                        <label for="name">Full name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Jordan Ellery">
+                        <p class="hint">As it should appear on your byline.</p>
+                    </div>
+                    <div class="margin">
+                        <div class="mark ok"><span class="glyph">✓</span><span>reads clean</span></div>
+                        <div class="mark err"><span class="glyph">?</span><span>needs a first and last name</span></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field" data-field="email">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="name@company.com">
+                        <p class="hint">Used for sign-in and billing receipts.</p>
+                    </div>
+                    <div class="margin">
+                        <div class="mark ok"><span class="glyph">✓</span><span>address checks out</span></div>
+                        <div class="mark err"><span class="glyph">?</span><span>doesn't look like an email</span></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field" data-field="phone">
+                        <label for="phone">Phone<span class="optional">optional</span></label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 415 555 0172">
+                        <p class="hint">Only used for account recovery.</p>
+                    </div>
+                    <div class="margin">
+                        <div class="mark ok"><span class="glyph">✓</span><span>readable number</span></div>
+                        <div class="mark err"><span class="glyph">?</span><span>needs at least 7 digits</span></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Password</legend>
+                <p class="section-note">At least 8 characters, with one number and one capital letter.</p>
+
+                <div class="row">
+                    <div class="field" data-field="password">
+                        <label for="password">New password</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password"
+                            placeholder="••••••••">
+                    </div>
+                    <div class="margin">
+                        <div class="mark ok"><span class="glyph">✓</span><span>strong enough</span></div>
+                        <div class="mark err"><span class="glyph">?</span><span>too weak — add a number and
+                                capital</span></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field" data-field="confirm">
+                        <label for="confirm">Confirm password</label>
+                        <input type="password" id="confirm" name="confirm" autocomplete="new-password"
+                            placeholder="••••••••">
+                    </div>
+                    <div class="margin">
+                        <div class="mark ok"><span class="glyph">✓</span><span>matches</span></div>
+                        <div class="mark err"><span class="glyph">?</span><span>doesn't match above</span></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Bio</legend>
+                <p class="section-note">A short line shown on your public profile.</p>
+
+                <div class="row">
+                    <div class="field" data-field="bio">
+                        <label for="bio">About you<span class="optional">optional</span></label>
+                        <textarea id="bio" name="bio" maxlength="160"
+                            placeholder="Editor covering climate and energy since 2016."></textarea>
+                        <div class="charcount"><span id="bioCount">0</span> / 160</div>
+                    </div>
+                    <div class="margin"></div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Notifications</legend>
+                <p class="section-note">Choose what's worth an interruption.</p>
+
+                <div class="toggle-row">
+                    <div class="label-block">
+                        <p class="t-title">Comment replies</p>
+                        <p class="t-desc">Someone responds to your notes.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notifyReplies" checked>
+                        <span class="track"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <div class="label-block">
+                        <p class="t-title">Weekly digest</p>
+                        <p class="t-desc">A Sunday summary of what you missed.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notifyDigest">
+                        <span class="track"></span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="footer-bar">
+                <span class="status" id="statusText">3 fields still need attention</span>
+                <button type="submit" id="submitBtn">Save changes</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="toast" id="toast">Settings saved</div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
