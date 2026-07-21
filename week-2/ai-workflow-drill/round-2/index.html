@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <!-- Page header: identifies the page and gives the user context -->
+        <header class="masthead">
+            <p class="kicker">Manuscript No. 0417</p>
+            <h1>Account Settings</h1>
+            <p class="intro">
+                Fields are checked as you type. A check mark means a field is ready to save;
+                a note explains what still needs fixing.
+            </p>
+        </header>
+
+        <main>
+            <form id="settingsForm" novalidate aria-describedby="formStatus">
+
+                <!-- Identity section -->
+                <fieldset>
+                    <legend>Identity</legend>
+                    <p class="section-note">How your name and contact details appear across the account.</p>
+
+                    <div class="row">
+                        <div class="field" data-field="name">
+                            <label for="name">Full name</label>
+                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Jordan Ellery"
+                                required aria-describedby="name-hint name-feedback" aria-invalid="false">
+                            <p class="hint" id="name-hint">As it should appear on your byline.</p>
+                        </div>
+                        <p class="feedback" id="name-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="field" data-field="email">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="email" autocomplete="email"
+                                placeholder="name@company.com" required aria-describedby="email-hint email-feedback"
+                                aria-invalid="false">
+                            <p class="hint" id="email-hint">Used for sign-in and billing receipts.</p>
+                        </div>
+                        <p class="feedback" id="email-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="field" data-field="phone">
+                            <label for="phone">Phone <span class="optional">(optional)</span></label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 415 555 0172"
+                                aria-describedby="phone-hint phone-feedback" aria-invalid="false">
+                            <p class="hint" id="phone-hint">Only used for account recovery.</p>
+                        </div>
+                        <p class="feedback" id="phone-feedback" aria-live="polite"></p>
+                    </div>
+                </fieldset>
+
+                <!-- Password section -->
+                <fieldset>
+                    <legend>Password</legend>
+                    <p class="section-note">At least 8 characters, with one number and one capital letter.</p>
+
+                    <div class="row">
+                        <div class="field" data-field="password">
+                            <label for="password">New password</label>
+                            <input type="password" id="password" name="password" autocomplete="new-password"
+                                placeholder="At least 8 characters" required aria-describedby="password-feedback"
+                                aria-invalid="false">
+                        </div>
+                        <p class="feedback" id="password-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="field" data-field="confirm">
+                            <label for="confirm">Confirm password</label>
+                            <input type="password" id="confirm" name="confirm" autocomplete="new-password"
+                                placeholder="Re-enter your password" required aria-describedby="confirm-feedback"
+                                aria-invalid="false">
+                        </div>
+                        <p class="feedback" id="confirm-feedback" aria-live="polite"></p>
+                    </div>
+                </fieldset>
+
+                <!-- Bio section -->
+                <fieldset>
+                    <legend>Bio</legend>
+                    <p class="section-note">A short line shown on your public profile.</p>
+
+                    <div class="row">
+                        <div class="field" data-field="bio">
+                            <label for="bio">About you <span class="optional">(optional)</span></label>
+                            <textarea id="bio" name="bio" maxlength="160" rows="3"
+                                placeholder="Editor covering climate and energy since 2016."
+                                aria-describedby="bio-count"></textarea>
+                            <p class="charcount" id="bio-count">
+                                <span id="bioCharsUsed">0</span> / 160 characters
+                            </p>
+                        </div>
+                        <p class="feedback" aria-hidden="true"></p>
+                    </div>
+                </fieldset>
+
+                <!-- Notification preferences -->
+                <fieldset>
+                    <legend>Notifications</legend>
+                    <p class="section-note">Choose what's worth an interruption.</p>
+
+                    <div class="toggle-row">
+                        <div class="label-block">
+                            <p class="t-title" id="repliesLabel">Comment replies</p>
+                            <p class="t-desc">Someone responds to your notes.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="notifyReplies" aria-labelledby="repliesLabel" checked>
+                            <span class="track" aria-hidden="true"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="label-block">
+                            <p class="t-title" id="digestLabel">Weekly digest</p>
+                            <p class="t-desc">A Sunday summary of what you missed.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="notifyDigest" aria-labelledby="digestLabel">
+                            <span class="track" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Submit bar: live status + save action -->
+                <div class="footer-bar">
+                    <p class="status" id="formStatus" role="status" aria-live="polite">
+                        Fill in the required fields to save.
+                    </p>
+                    <button type="submit" id="submitBtn" disabled aria-disabled="true">
+                        Save changes
+                    </button>
+                </div>
+
+            </form>
+        </main>
+
+    </div>
+
+    <!-- Toast notification, announced to assistive tech when it appears -->
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

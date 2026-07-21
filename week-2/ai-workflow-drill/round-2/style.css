@@ -1,0 +1,459 @@
+/* =========================================================
+   1. Design tokens
+   ========================================================= */
+:root {
+    --paper: #F7F5F0;
+    --card: #FFFFFF;
+    --ink: #1B1E2B;
+    --ink-soft: #5C5F6B;
+    --ink-faint: #9A9C9F;
+    --forest: #2D5C4C;
+    --forest-dark: #1E4136;
+    --brick: #B3261E;
+    --brick-soft: #F6E4E2;
+    --line: #E4E1D8;
+    --focus-ring: #2D5C4C;
+
+    --radius-sm: 6px;
+    --radius-lg: 10px;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+}
+
+/* =========================================================
+   2. Reset & base
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.5;
+    padding: var(--space-xl) var(--space-md) 80px;
+}
+
+/* Consistent, visible focus state for every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   3. Layout
+   ========================================================= */
+.wrap {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.masthead h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 0 0 var(--space-sm);
+    letter-spacing: -0.01em;
+}
+
+.kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    margin: 0 0 var(--space-xs);
+}
+
+.intro {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0;
+}
+
+form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+}
+
+fieldset {
+    border: none;
+    padding: var(--space-lg) var(--space-xl);
+    margin: 0;
+}
+
+fieldset+fieldset {
+    border-top: 1px solid var(--line);
+}
+
+legend {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0;
+    margin-bottom: var(--space-xs);
+}
+
+.section-note {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: 0 0 var(--space-lg);
+}
+
+/* Each row pairs a field with its validation feedback column */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    column-gap: var(--space-lg);
+    align-items: start;
+    margin-bottom: var(--space-lg);
+}
+
+.row:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   4. Form fields
+   ========================================================= */
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+.optional {
+    font-weight: 400;
+    color: var(--ink-faint);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #C9C6BB;
+    border-radius: var(--radius-sm);
+    background: #FCFBF8;
+    color: var(--ink);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 84px;
+    line-height: 1.5;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(45, 92, 76, 0.12);
+}
+
+.hint {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin: var(--space-xs) 0 0;
+}
+
+/* Valid / invalid field states, driven by classes set in script.js */
+.field.is-valid input,
+.field.is-valid textarea {
+    border-color: var(--forest);
+}
+
+.field.is-error input,
+.field.is-error textarea {
+    border-color: var(--brick);
+    background: #FFFCFB;
+}
+
+/* Error styling wins over valid if both were somehow present */
+.field.is-error input:focus,
+.field.is-error textarea:focus {
+    box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.12);
+}
+
+/* =========================================================
+   5. Validation feedback column
+   ========================================================= */
+.feedback {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 32px 0 0;
+    min-height: 1px;
+}
+
+.field.is-valid+.feedback {
+    color: var(--forest-dark);
+}
+
+.field.is-error+.feedback {
+    color: var(--brick);
+}
+
+.field.is-valid+.feedback::before {
+    content: "✓ ";
+}
+
+.field.is-error+.feedback::before {
+    content: "! ";
+}
+
+.charcount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-align: right;
+    margin: var(--space-xs) 0 0;
+}
+
+.charcount.is-near-limit {
+    color: var(--brick);
+}
+
+/* =========================================================
+   6. Notification toggles
+   ========================================================= */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: 12px 0;
+}
+
+.toggle-row+.toggle-row {
+    border-top: 1px solid var(--line);
+}
+
+.label-block p {
+    margin: 0;
+}
+
+.t-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.t-desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: var(--space-xs) !important;
+}
+
+.switch {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.switch .track {
+    position: absolute;
+    inset: 0;
+    background: #D3D0C5;
+    border-radius: 999px;
+    transition: background 140ms ease;
+    pointer-events: none;
+}
+
+.switch .track::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 140ms ease;
+}
+
+.switch input:checked+.track {
+    background: var(--forest);
+}
+
+.switch input:checked+.track::after {
+    transform: translateX(18px);
+}
+
+.switch input:focus-visible+.track {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   7. Footer bar & button states
+   ========================================================= */
+.footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    background: #FBFAF6;
+    border-top: 1px solid var(--line);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin: 0;
+}
+
+.status.is-ready {
+    color: var(--forest-dark);
+}
+
+button[type="submit"] {
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--forest);
+    color: #fff;
+    cursor: pointer;
+    transition: background 140ms ease, transform 80ms ease, opacity 140ms ease;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background: var(--forest-dark);
+}
+
+button[type="submit"]:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+button[type="submit"]:disabled {
+    background: var(--ink-faint);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   8. Toast notification
+   ========================================================= */
+.toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.toast.is-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   9. Responsive layout
+   ========================================================= */
+
+/* Tablet: tighten side padding, keep two-column rows */
+@media (max-width: 900px) {
+    .wrap {
+        max-width: 100%;
+    }
+
+    fieldset {
+        padding: var(--space-lg);
+    }
+
+    .footer-bar {
+        padding: var(--space-lg);
+    }
+
+    .row {
+        grid-template-columns: 1fr 160px;
+        column-gap: var(--space-md);
+    }
+}
+
+/* Mobile: stack feedback below each field */
+@media (max-width: 620px) {
+    body {
+        padding: var(--space-lg) var(--space-sm) 96px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback {
+        margin-top: var(--space-xs);
+    }
+
+    fieldset {
+        padding: var(--space-md);
+    }
+
+    .footer-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-md);
+        padding: var(--space-md);
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}
